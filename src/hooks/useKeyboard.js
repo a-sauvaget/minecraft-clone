@@ -11,7 +11,10 @@ function actionByKey(key) {
     Digit2: 'grass',
     Digit3: 'glass',
     Digit4: 'wood',
-    Digit5: 'log'
+    Digit5: 'log',
+    Digit6: 'stonebrick',
+    Digit7: 'leave',
+    Digit8: 'stone'
   };
   return keyActionMap[key];
 }
@@ -27,7 +30,11 @@ export const useKeyboard = () => {
     grass: false,
     glass: false,
     wood: false,
-    log: false
+    log: false,
+    stonebrick: false,
+    leave: false,
+    stone: false,
+    grassdirt: false
   });
 
   const handleKeyDown = useCallback((e) => {

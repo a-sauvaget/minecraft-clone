@@ -1,7 +1,16 @@
-import {useEffect, useState} from 'react'
-import {useStore} from "../hooks/useStore"
-import {useKeyboard} from "../hooks/useKeyboard"
-import {dirtImg, grassImg, glassImg, logImg, woodImg} from '../images/images'
+import {useEffect, useState} from 'react';
+import {useStore} from '../hooks/useStore';
+import {useKeyboard} from '../hooks/useKeyboard';
+import {
+  dirtImg,
+  grassImg,
+  glassImg,
+  logImg,
+  woodImg,
+  stonebrickImg,
+  leaveImg,
+  stoneImg
+} from '../images/images';
 
 const images = {
   dirt: dirtImg,
@@ -9,18 +18,24 @@ const images = {
   glass: glassImg,
   wood: woodImg,
   log: logImg,
-}
+  stonebrick: stonebrickImg,
+  leave: leaveImg,
+  stone: stoneImg
+};
 
 export const TextureSelector = () => {
-  const [visible, setVisible] = useState(false)
-  const [activeTexture, setTexture] = useStore((state) => [state.texture, state.setTexture])
+  const [visible, setVisible] = useState(false);
+  const [activeTexture, setTexture] = useStore((state) => [state.texture, state.setTexture]);
   const {
     dirt,
     grass,
     glass,
     wood,
     log,
-  } = useKeyboard()
+    stonebrick,
+    leave,
+    stone
+  } = useKeyboard();
 
   useEffect(() => {
     const textures = {
@@ -28,35 +43,38 @@ export const TextureSelector = () => {
       grass,
       glass,
       wood,
-      log
-    }
-    const pressedTexture = Object.entries(textures).find(([k, v]) => v)
+      log,
+      stonebrick,
+      leave,
+      stone
+    };
+    const pressedTexture = Object.entries(textures).find(([k, v]) => v);
     if (pressedTexture) {
-      setTexture(pressedTexture[0])
+      setTexture(pressedTexture[0]);
     }
-  }, [setTexture, dirt, grass, glass, wood, log])
+  }, [setTexture, dirt, grass, glass, wood, log, stonebrick, leave, stone]);
 
 
   useEffect(() => {
     const visibilityTimeout = setTimeout(() => {
-      setVisible(false)
-    }, 2000)
-    setVisible(true)
+      setVisible(false);
+    }, 2000);
+    setVisible(true);
     return () => {
-      clearTimeout(visibilityTimeout)
-    }
-  }, [activeTexture])
+      clearTimeout(visibilityTimeout);
+    };
+  }, [activeTexture]);
 
   return visible && (
-      <div className='absolute centered texture-selector'>
+      <div className="absolute centered texture-selector">
         {Object.entries(images).map(([k, src]) => {
           return (<img
               key={k}
               src={src}
               alt={k}
               className={`${k === activeTexture ? 'active' : ''}`}
-          />)
+          />);
         })}
       </div>
-  )
-}
+  );
+};
