@@ -6,9 +6,9 @@
 - [X] Player
 - [X] First person view
 - [X] Movement
-- [] Gravity
-- [] State management
-- [] Cubes
-- [] Cube type selector
+- [X] Gravity
+- [X] State management
+- [X] Cubes
+- [X] Cube type selector
 - [] Save world in localstorage
 - [] Build a house
