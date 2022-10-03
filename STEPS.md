@@ -3,7 +3,7 @@
 - [X] Textures and images
 - [X] Ground
 - [X] Keyboard inputs
-- [] Player
+- [X] Player
 - [] First person view
 - [] Gravity
 - [] Movement
